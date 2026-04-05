@@ -1,13 +1,6 @@
+from logic_keywords import logic_symbol_word_dict
 import re
 
-direct_logic_symbol_to_word = { 
-    "∃": ["there exists", "there is", "there are", "for some", "there is at least one"],
-    "∀": ["for all", "for every", "all"],
-    "⟷": ["if and only if"],
-    "^": ["and"],
-    "v": ["or"],
-    "¬": ["not", "it is not the case that", "n't", "nt"],
-}
 
 def english_to_predicate(predicate: str) -> str:
     all_blah_are_blah_re = re.compile(r"all ([\w ]+) (are|is)([\w ]+)")
@@ -17,16 +10,15 @@ def english_to_predicate(predicate: str) -> str:
         before_are = thing.group(1) # all [dogs] are friendly
         after_are = thing.group(3) # all dogs are [friendly]
         
-        # sana3oodo ba3d kaleel        
-        # before_are = english_to_predicate(before_are)
-        # after_are = english_to_predicate(after_are) # are friendly and happy -> freindly ^ happy
+        before_are = english_to_predicate(before_are)
+        after_are = english_to_predicate(after_are) # are friendly and happy -> freindly ^ happy
         
         return f"∀x ({before_are}(x) → {after_are}(x))"
     else:
         return replace_keywords(predicate)
 
 def replace_keywords(sentance: str) -> str:
-    for symbol, key_words in direct_logic_symbol_to_word.items():
+    for symbol, key_words in logic_symbol_word_dict.items():
         for key_word in key_words:
             word_location = sentance.find(key_word)
             if word_location == -1:

@@ -16,12 +16,7 @@ def statement_a():
 def statement_b():
     return c and d
 
-def statement_c():   
-    # if a:
-    #     return not b
-    # else:
-    #     return True
-    # -a + a(-b) -> -a + -b
+def statement_c():
     return not a or not b
 
 def statement_d():
