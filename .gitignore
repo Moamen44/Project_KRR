@@ -1,2 +1,5 @@
 .venv
-truth table.csv
+1 truth table.csv
+REPORT.pdf
+__pycache__
+.mypy_cache
