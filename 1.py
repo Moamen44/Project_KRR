@@ -1,12 +1,12 @@
 from pandas import DataFrame
 
 # true if that travler is telling the truth
-a: bool | None = None
-b: bool | None = None
-c: bool | None = None
-d: bool | None = None
-e: bool | None = None
-f: bool | None = None
+a: bool
+b: bool
+c: bool
+d: bool
+e: bool
+f: bool
 
 # translating the statements of each traveler to prepositional logic
 
@@ -17,17 +17,17 @@ def statement_b():
     return c and d
 
 def statement_c():
-    return not a or not b
+    return not a or not e
 
 def statement_d():
     return (a and b) or (not a and not b)
 
 def statement_e():
-    return ((a and b) or (a and c) or (a and d) or (a and e) or (a and f) 
-            or (b and c) or (b and d) or (b and e) or (b and f) 
-            or (c and d) or (c and e) or (c and f) 
-            or (d and e) or (d and f) 
-            or (e and f))
+    return ((not a and not b) or (not a and not c) or (not a and not d) or (not a and not e) or (not a and not f) 
+            or (not b and not c) or (not b and not d) or (not b and not e) or (not b and not f) 
+            or (not c and not d) or (not c and not e) or (not c and not f) 
+            or (not d and not e) or (not d and not f) 
+            or (not e and not f))
 
 def statement_f():
     return d and not e
